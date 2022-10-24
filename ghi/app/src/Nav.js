@@ -1,6 +1,15 @@
 import { NavLink } from 'react-router-dom';
+import Dropdown from 'react-bootstrap/Dropdown';
+import React from 'react';
 
-function Nav() {
+
+
+
+
+
+
+
+function Navl() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
       <div className="container-fluid">
@@ -10,6 +19,29 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item>">
+                <Dropdown>
+                  <Dropdown.Toggle variant="dark" id="inventory-dropdown">
+                    Inventory
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="/manufacturers">List Manufacturers</Dropdown.Item>
+                    <Dropdown.Item href="/models">List Models</Dropdown.Item>
+                    <Dropdown.Item href="/automobiles">List Automobiles</Dropdown.Item>
+                    {
+
+                      <React.Fragment>
+                    <Dropdown.Item href="/manufacturers/new">Add Manufacturer</Dropdown.Item>
+                    <Dropdown.Item href="/models/new">Add Model</Dropdown.Item>
+                    <Dropdown.Item href="/automobiles/new">Add Automobile</Dropdown.Item>
+                    </React.Fragment>
+
+
+                    }
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+
           </ul>
         </div>
       </div>
@@ -17,4 +49,4 @@ function Nav() {
   )
 }
 
-export default Nav;
+export default Navl;
