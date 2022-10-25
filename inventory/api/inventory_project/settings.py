@@ -30,7 +30,11 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
     "corsheaders",
+=======
+    'corsheaders',
+>>>>>>> refs/remotes/origin/main
     "inventory_rest.apps.InventoryRestConfig",
     'django.contrib.admin',
     'django.contrib.auth',
