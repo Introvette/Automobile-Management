@@ -33,7 +33,7 @@ class VehicleModels extends React.Component {
   render () {
     return (
       <div>
-      <h2>Models </h2>
+      <h2>Vehicle models </h2>
       <table className="table table-striped table-hover table-bordered">
       <thead >
         <tr>
