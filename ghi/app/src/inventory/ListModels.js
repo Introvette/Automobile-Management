@@ -48,7 +48,7 @@ class VehicleModels extends React.Component {
           <tr key={model.id}>
             <td>{model.name}</td>
             <td>{model.manufacturer.name}</td>
-            <td><img src={model.picture_url} alt="car" width="259" height="180"/>
+            <td><img src={model.picture_url} alt="car" width="220" height="200"/>
             </td>
           </tr>
         )
@@ -59,4 +59,4 @@ class VehicleModels extends React.Component {
     )
   }
 }
-export default VehicleModels
+export default VehicleModels;

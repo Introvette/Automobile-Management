@@ -21,7 +21,7 @@ function Navl() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item>">
                 <Dropdown>
-                  <Dropdown.Toggle variant="dark" id="inventory-dropdown">
+                  <Dropdown.Toggle variant="light" id="inventory-dropdown">
                     Inventory
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
