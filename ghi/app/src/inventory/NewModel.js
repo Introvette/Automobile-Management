@@ -6,8 +6,7 @@ class NewModel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            successVisible: "d-none",
-            formVisible: "shadow p-4 mt-4",
+
             manufacturers: [],
             name: "",
             pictureUrl: "",
@@ -22,8 +21,7 @@ class NewModel extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = {...this.state};
-        delete data.formVisible;
-        delete data.successVisible;
+
         delete data.manufacturers;
         data.manufacturer_id = data.manufacturer;
         data.picture_url = data.pictureUrl;
@@ -87,53 +85,47 @@ class NewModel extends React.Component {
         return (
             <div className="row">
                 <div className="offset-3 col-6">
-                    <div className={this.state.successVisible}>
-                        <div className="alert alert-success mt-4" role="alert">
-                            {this.state.message}
+                    <h1>Create a vehicle model</h1>
+                    <form onSubmit={this.handleSubmit} id="addModelForm">
+                        <div className="form-floating mb-3">
+                            <input
+                                className="form-control" required type="text"
+                                onChange={this.handleNameChange} id="name"
+                                placeholder="name" value={this.state.name}
+                            />
+                            <label htmlFor="name">Name</label>
                         </div>
-
-                    </div>
-
-                        <h1>Create a vehicle model</h1>
-                        <form onSubmit={this.handleSubmit} id="addModelForm">
-                            <div className="form-floating mb-3">
-                                <input
-                                    className="form-control" required type="text"
-                                    onChange={this.handleNameChange} id="name"
-                                    placeholder="name" value={this.state.name}
-                                />
-                                <label htmlFor="name">Name</label>
-                            </div>
-                            <div className="form-floating mb-3">
-                                <input
-                                    className="form-control" required type="text"
-                                    onChange={this.handlePictureChange} id="pictureUrl"
-                                    name="pictureUrl" value={this.state.pictureUrl}
-                                    placeholder="pictureUrl"
-                                />
-                                <label htmlFor="pictureUrl">Picture URL</label>
-                            </div>
-                            <div className="form-floating mb-3">
-                                <select
-                                    className="form-select" required id="manufacturer"
-                                    onChange={this.handleManufacturerChange} name="manufacturer"
-                                    placeholder="manufacturer" value={this.state.manufacturer}
-                                >
-                                    <option value="">Choose One</option>
-                                    {this.state.manufacturers.map(manufacturer => {
-                                        return (
-                                            <option key={manufacturer.id} value={manufacturer.id}>
-                                                {manufacturer.name}
-                                            </option>
-                                        );
-                                    })}
-                                </select>
-                                <label htmlFor="manufacturer">Manufacturer</label>
-                            </div>
-                            <button className="btn btn-primary">Create Model</button>
-                        </form>
-                    </div>
+                        <div className="form-floating mb-3">
+                            <input
+                                className="form-control" required type="text"
+                                onChange={this.handlePictureChange} id="pictureUrl"
+                                name="pictureUrl" value={this.state.pictureUrl}
+                                placeholder="pictureUrl"
+                            />
+                            <label htmlFor="pictureUrl">Picture URL</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <select
+                                className="form-select" required id="manufacturer"
+                                onChange={this.handleManufacturerChange} name="manufacturer"
+                                placeholder="manufacturer" value={this.state.manufacturer}
+                            >
+                                <option value="">Choose One</option>
+                                {this.state.manufacturers.map(manufacturer => {
+                                    return (
+                                        <option key={manufacturer.id} value={manufacturer.id}>
+                                            {manufacturer.name}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                            <label htmlFor="manufacturer">Manufacturer</label>
+                        </div>
+                        <button className="btn btn-primary">Create Model</button>
+                    </form>
                 </div>
+            </div>
+
 
         )
     };
