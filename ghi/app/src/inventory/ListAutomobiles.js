@@ -1,52 +1,65 @@
-import React from 'react';
+import React from 'react'
 
 
-function ListAutomobiles() {
-    const [data, setData] = React.useState([]);
-    React.useEffect(() => {
-        const url = "http://localhost:8100/api/automobiles/";
-        fetch(url)
-        .then((response)=> response.json())
-        .then((json)=> setData(json['autos']))
-        .catch((error) => console.log(error));
-    }, []);
-    React.useEffect(()=> {
+class Automobiles extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      automobiles: [],
+    }
+    this.getAutomobiles = this.getAutomobiles.bind(this)
+  }
 
-    }, [data]);
 
+  async getAutomobiles() {
+    const autoURL = 'http://localhost:8100/api/automobiles/'
+    try {
+      const autoResponse = await fetch(autoURL)
+      if (autoResponse.ok) {
+        const autoData = await autoResponse.json()
+        this.setState({
+          automobiles: autoData.autos,
+        })
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  async componentDidMount() {
+    this.getAutomobiles()
+  }
+
+  render () {
     return (
-        <div>
-            <p></p>
-            <h2>Automobiles</h2>
-            <table className="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>VIN</th>
-                        <th>Color</th>
-                        <th>Year</th>
-                        <th>Model</th>
-                        <th>Manufacturer</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                        {data.map(automobile => {
-                            if(automobile.sold === false) {
-                                return (
-                                    <tr key={automobile.id}>
-                                        <td>{automobile.vin}</td>
-                                        <td>{automobile.color}</td>
-                                        <td>{automobile.year}</td>
-                                        <td>{automobile.model.name}</td>
-                                        <td>{automobile.model.manufacturer.name}</td>
-                                    </tr>
-                                );
-                            }
-                            })}
-                    </tbody>
-            </table>
-        </div>
-    );
+      <div>
+       <h2>Automobiles</h2>
+      <table className="table table-striped table-hover table-bordered">
+      <thead>
+        <tr>
+          <th>VIN</th>
+          <th>Color </th>
+          <th>Year</th>
+          <th>Model</th>
+          <th>Manufacturer</th>
+        </tr>
+      </thead>
+      <tbody>
+       {this.state.automobiles.map(auto => {
+        return (
+          <tr key={auto.id}>
+            <td>{auto.vin}</td>
+            <td>{auto.color}</td>
+            <td>{auto.year}</td>
+            <td>{auto.model.name}</td>
+            <td>{auto.model.manufacturer.name}</td>
+          </tr>
+        )
+       })}
+      </tbody>
+    </table>
+    </div>
+    )
+  }
 }
-
-export default ListAutomobiles;
+export default Automobiles
