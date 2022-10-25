@@ -17,8 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/manufacturers">
-            <Route path="" element={<ListManufacturer/>}/>
-            <Route path="new" element={<NewManufacturer/>}/>
+            <Route path="" element={<ListManufacturer />}/>
+            <Route path="new" element={<NewManufacturer />}/>
           </Route>
           <Route path="/models">
             <Route path="" element={<ListModels />} />
