@@ -21,13 +21,8 @@ function Navl() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item>">
                 <Dropdown>
-<<<<<<< HEAD
                   <Dropdown.Toggle variant="light" id="inventory-dropdown">
-                    Inventory
-=======
-                  <Dropdown.Toggle variant="light" id="dropdown">
                     Menu
->>>>>>> refs/remotes/origin/main
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item href="/manufacturers">List Manufacturers</Dropdown.Item>

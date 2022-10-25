@@ -64,7 +64,7 @@ def list_appointment(request):
             technician_value = Technician.objects.get(id=technician_key)
             content["technician"] = technician_value
             appointment = Appointment.objects.create(**content)
-
+            print(appointment)
             return JsonResponse(
                 appointment,
                 encoder=AppointmentEncoder,
