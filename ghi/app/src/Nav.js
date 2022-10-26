@@ -35,12 +35,28 @@ function Navl() {
                     </React.Fragment>
                   </Dropdown.Menu>
                 </Dropdown>
+                <p></p>
+                <Dropdown>
+                  <Dropdown.Toggle variant="light" id="services-dropdown">
+                    Services
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="/appointment/">Appointments</Dropdown.Item>
+                    <Dropdown.Item href="/appointment/history">Service History</Dropdown.Item>
+                    <Dropdown.Item href="/technician/new">Add New Technician</Dropdown.Item>
+                    <Dropdown.Item href="/appointment/new">Schedule an Appointment</Dropdown.Item>
+
+                  </Dropdown.Menu>
+
+                </Dropdown>
               </li>
           </ul>
         </div>
       </div>
     </nav>
   )
-}
+  }
+
+
 
 export default Navl;

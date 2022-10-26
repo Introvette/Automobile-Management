@@ -7,6 +7,10 @@ import ListManufacturer from './inventory/ListManufacturer';
 import NewManufacturer from './inventory/NewManufacturer';
 import NewAutomobile from './inventory/NewAutomobile';
 import NewModel from './inventory/NewModel';
+import TechnicianForm from './services/NewTechnician';
+
+import NewAppointment from './services/NewAppointment';
+import AppointmentList from './services/AppointmentList';
 
 
 function App() {
@@ -27,6 +31,13 @@ function App() {
           <Route path="/automobiles">
             <Route path="" element={<ListAutomobiles />} />
             <Route path="new" element={<NewAutomobile />} />
+          </Route>
+          <Route path="/technician">
+            <Route path="new" element={<TechnicianForm/>} />
+          </Route>
+          <Route path="/appointment/">
+            <Route path="" element={<AppointmentList/>} />
+            <Route path="new" element={<NewAppointment />} />
           </Route>
 
         </Routes>
