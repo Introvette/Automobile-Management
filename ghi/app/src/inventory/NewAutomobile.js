@@ -107,8 +107,9 @@ class NewAutomobile extends React.Component {
 
     render() {
         return (
-            <div className="row">
+            <div className='container pt-5'>
                 <div className="offset-3 col-6">
+                    <div className="shadow p-4 mt-4">
                      <h1>Add an automobile to inventory</h1>
                         <form onSubmit={this.handleSubmit} id="newAutomobileForm">
                             <div className="form-floating mb-3">
@@ -176,7 +177,7 @@ class NewAutomobile extends React.Component {
                         </form>
                     </div>
                 </div>
-
+            </div>
         );
     }
 }

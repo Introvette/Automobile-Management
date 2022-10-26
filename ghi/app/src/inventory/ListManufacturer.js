@@ -35,7 +35,7 @@ class Manufacturers extends React.Component {
     return (
     <div>
       <h2>Manufacturers</h2>
-      <table className="table table-striped table-hover table-bordered">
+      <table className="table table-striped">
       <thead >
         <tr>
           <th>Name</th>

@@ -49,6 +49,19 @@ function Navl() {
                   </Dropdown.Menu>
 
                 </Dropdown>
+                <p></p>
+                <Dropdown>
+                  <Dropdown.Toggle variant="light" id="customers-dropdown">
+                    Sales
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="/customer/new">Add New Customer</Dropdown.Item>
+                    <Dropdown.Item href="/salesperson/new">Add Sales Person</Dropdown.Item>
+                    <Dropdown.Item href="/sales/new">Add a Sale</Dropdown.Item>
+                    <Dropdown.Item href="/sales/"> Sales List</Dropdown.Item>
+                    <Dropdown.Item href="/sales/history">Sales History</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </li>
           </ul>
         </div>

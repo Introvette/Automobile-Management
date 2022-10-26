@@ -83,8 +83,9 @@ class NewModel extends React.Component {
 
     render () {
         return (
-            <div className="row">
+            <div className='container pt-5'>
                 <div className="offset-3 col-6">
+                    <div className="shadow p-4 mt-4">
                     <h1>Create a vehicle model</h1>
                     <form onSubmit={this.handleSubmit} id="addModelForm">
                         <div className="form-floating mb-3">
@@ -125,8 +126,7 @@ class NewModel extends React.Component {
                     </form>
                 </div>
             </div>
-
-
+        </div>
         )
     };
 }

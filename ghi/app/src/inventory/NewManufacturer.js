@@ -41,8 +41,9 @@ class NewManufacturer extends React.Component {
 
   render () {
     return (
-      <div className="row">
+      <div className='container pt-5'>
         <div className="offset-3 col-6">
+          <div className="shadow p-4 mt-4">
             <h1>Create a new manufacturer</h1>
             <form onSubmit={this.handleSubmit} id="create-manufacturer-form">
               <div className="form-floating mb-3">
@@ -53,7 +54,7 @@ class NewManufacturer extends React.Component {
             </form>
           </div>
         </div>
-
+      </div>
     )
   }
 
