@@ -5,7 +5,7 @@ from django.utils import timezone
 class AutomobileVO(models.Model):
     color = models.CharField(max_length=50)
     year = models.PositiveSmallIntegerField()
-    vin = models.CharField(max_length=17, unique=True)
+    vin = models.CharField(max_length=17, unique=True )
 
     def __str__(self):
         return self.vin
@@ -21,14 +21,15 @@ class Technician(models.Model):
 class Appointment(models.Model):
     technician = models.ForeignKey(
         Technician,
-        related_name="service",
+        related_name="appointments",
         on_delete=models.PROTECT
     )
     owner = models.CharField(max_length=50)
-    scheduled_time = models.DateTimeField(default=timezone.now)
+    date = models.CharField(max_length=100)
+    time = models.CharField(max_length=100)
     automobile = models.ForeignKey(
         AutomobileVO,
-        related_name="service",
+        related_name="appointments",
         on_delete=models.PROTECT
     )
     reason = models.TextField(max_length=100)

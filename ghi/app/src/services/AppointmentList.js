@@ -10,7 +10,7 @@ class AppointmentList extends React.Component {
 
 
     async finishedAppointment(id) {
-        const appointmentUrl = `http://localhost:8080/api/appointment/${id}/`;
+        const appointmentUrl = `http://localhost:8080/api/appointments/${id}/`;
 
         const fetchConfig = {
             method: "PUT",
@@ -29,7 +29,7 @@ class AppointmentList extends React.Component {
 
 
     async cancelAppointment(id) {
-        const appointmentUrl = `http://localhost:8080/api/appointment/${id}/`;
+        const appointmentUrl = `http://localhost:8080/api/appointments/${id}/`;
 
         const fetchConfig = {
             method: "DELETE",
@@ -44,10 +44,8 @@ class AppointmentList extends React.Component {
             this.componentDidMount()
         }
     }
-
-
     async componentDidMount() {
-        const response = await fetch ("http://localhost:8080/api/appointment/");
+        const response = await fetch ("http://localhost:8080/api/appointments/");
         if (response.ok) {
             const data = await response.json();
             const filterAppointments = data.appointments.filter(appointment => appointment.finished === false);
@@ -85,7 +83,8 @@ class AppointmentList extends React.Component {
                             <tr key={ appointment.id }>
                                 <td>{ appointment.vin }</td>
                                 <td>{ appointment.customer_name }</td>
-                                <td>{ appointment.scheduled_time }</td>
+                                <td>{ appointment.date }</td>
+                                <td>{ appointment.time }</td>
                                 <td>{ appointment.reason }</td>
                                 <td>{ appointment.technician.name }</td>
                                 { appointment.vip && <td>Yes</td> }
@@ -107,7 +106,7 @@ class AppointmentList extends React.Component {
                 <h1>Service Appointments</h1>
                 {appointmentHistory}
                 <div className="d-grid gap-2 d-sm-flex justify-content-sm-end">
-                    <Link to="/appointment/new" className="btn btn-success btn-lg px-4 gap-3">Schedule new appointment</Link>
+                    <Link to="/appointments/new" className="btn btn-success btn-lg px-4 gap-3">Schedule new appointment</Link>
                 </div>
             </div>
         )

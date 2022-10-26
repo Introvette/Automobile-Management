@@ -197,10 +197,9 @@ def show_technician(request, pk):
 def list_service_history(request, vin):
     if request.method == "GET":
         try:
-            service = Appointment.objects.filter(automobile__vin=vin)
-            #service = Appointment.objects.all()
+            appointment = Appointment.objects.filter(automobile__vin=vin)
             return JsonResponse(
-                service,
+                appointment,
                 encoder=AppointmentEncoder,
                 safe=False
             )
