@@ -11,7 +11,7 @@ from django.db import IntegrityError
 
 class AutomobileVODetailEncoder(ModelEncoder):
     model = AutomobileVO
-    properties = ["import_href", "vin", "sold"]
+    properties = ["vin", "sold"]
 
 class SalespersonListEncoder(ModelEncoder):
     model = Salesperson
@@ -23,11 +23,11 @@ class SalespersonDetailEncoder(ModelEncoder):
 
 class CustomerListEncoder(ModelEncoder):
     model = Customer
-    properties = ["id", "name", "address", "phone"]
+    properties = ["id", "customer", "address", "phone"]
 
 class CustomerDetailEncoder(ModelEncoder):
     model = Customer
-    properties = ["id", "name", "address", "phone"]
+    properties = ["id", "customer", "address", "phone"]
 
 class AutosaleListEncoder(ModelEncoder):
     model = Autosale
@@ -139,7 +139,7 @@ def list_autosales(request):
                 status = 400,
             )
         try:
-            customer = Customer.objects.get(customer_name=content["customer"])
+            customer = Customer.objects.get(customer=content["customer"])
             content["customer"] = customer
         except Customer.DoesNotExist:
             return JsonResponse(

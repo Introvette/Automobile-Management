@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Customer(models.Model):
-    name = models.CharField(max_length=100)
+    customer = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     phone = models.CharField(max_length=50)
 
@@ -11,7 +11,6 @@ class Customer(models.Model):
         return self.name
 
 class AutomobileVO(models.Model):
-    import_href = models.CharField(max_length=200, unique=True)
     vin = models.CharField(max_length=50, unique=True)
     sold = models.BooleanField(default=False)
 
