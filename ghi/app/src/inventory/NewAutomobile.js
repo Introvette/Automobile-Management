@@ -109,7 +109,7 @@ class NewAutomobile extends React.Component {
         return (
             <div className='container pt-5'>
                 <div className="offset-3 col-6">
-                    <div className="shadow p-4 mt-4">
+                    <div className="shadow p-3 mt-3">
                      <h1>Add an automobile to inventory</h1>
                         <form onSubmit={this.handleSubmit} id="newAutomobileForm">
                             <div className="form-floating mb-3">

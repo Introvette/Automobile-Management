@@ -6,14 +6,11 @@ from .models import AutomobileVO, Appointment, Technician
 from common.json import ModelEncoder
 
 
-
-# encoders
 class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
-        "vin",
-        "color",
-        "year",
+        "vin"
+
     ]
 
 class TechnicianEncoder(ModelEncoder):
@@ -33,42 +30,42 @@ class AppointmentEncoder(ModelEncoder):
         "id",
         "technician",
         "owner",
-        "scheduled_time",
-        "automobile",
-        "reason"
+        "vin",
+        "reason",
+        "date",
+        "time",
 
     ]
     encoders = {
         "automobile": AutomobileVOEncoder(),
         "technician": TechnicianEncoder(),
+
     }
 
-# Create your views here.
+
 @require_http_methods(["GET", "POST"])
 def list_appointment(request):
     if request.method == "GET":
         appointment = Appointment.objects.all()
         print(appointment)
         return JsonResponse(
-            {"appointment": appointment},
+            {"appointments": appointment},
             encoder=AppointmentEncoder,
         )
     else:
         try:
             content = json.loads(request.body)
-            vin_key = content["automobile"]
-            vin_value = AutomobileVO.objects.get(vin=vin_key)
-            print("vin value", vin_value)
-            content["automobile"] = vin_value
+
             technician_key = content["technician"]
             technician_value = Technician.objects.get(id=technician_key)
             content["technician"] = technician_value
+            print(content)
             appointment = Appointment.objects.create(**content)
-            print(appointment)
+            # print(appointment)
             return JsonResponse(
-                appointment,
-                encoder=AppointmentEncoder,
-                safe=False,
+                    appointment,
+                    encoder=AppointmentEncoder,
+                    safe=False
             )
         except AutomobileVO.DoesNotExist:
             return JsonResponse(
@@ -103,12 +100,12 @@ def show_appointment(request, pk):
             )
         except Appointment.DoesNotExist:
             return JsonResponse({"message": "Does not exist"})
-    else: # PUT
+    else:
         try:
             content = json.loads(request.body)
             appointment = Appointment.objects.get(id=pk)
 
-            props = ["owner", "date", "finished", "canceled", "vip"]
+            props = ["owner", "date", "time", "finished", "canceled", "vip"]
             for prop in props:
                 if prop in content:
                     setattr(appointment, prop, content[prop])
@@ -128,7 +125,7 @@ def list_technician(request):
     if request.method == "GET":
         technician = Technician.objects.all()
         return JsonResponse(
-            {"technician": technician},
+            {"technicians": technician},
             encoder=TechnicianEncoder,
         )
     else:
@@ -173,7 +170,7 @@ def show_technician(request, pk):
             )
         except Technician.DoesNotExist:
             return JsonResponse({"message": "Does not exist"})
-    else: # PUT
+    else:
         try:
             content = json.loads(request.body)
             technician = Technician.objects.get(id=pk)
@@ -197,7 +194,7 @@ def show_technician(request, pk):
 def list_service_history(request, vin):
     if request.method == "GET":
         try:
-            appointment = Appointment.objects.filter(automobile__vin=vin)
+            appointment = Appointment.objects.filter(vin=vin)
             return JsonResponse(
                 appointment,
                 encoder=AppointmentEncoder,

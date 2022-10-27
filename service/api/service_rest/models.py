@@ -1,14 +1,12 @@
 from django.db import models
 from django.urls import reverse
-from django.utils import timezone
+
 
 class AutomobileVO(models.Model):
-    color = models.CharField(max_length=50)
-    year = models.PositiveSmallIntegerField()
-    vin = models.CharField(max_length=17, unique=True )
+    vin = models.CharField(max_length=17, unique=True)
+    import_href = models.CharField(max_length=200, unique=True, null=True)
 
-    def __str__(self):
-        return self.vin
+
 
 class Technician(models.Model):
     name = models.CharField(max_length=50)
@@ -25,15 +23,11 @@ class Appointment(models.Model):
         on_delete=models.PROTECT
     )
     owner = models.CharField(max_length=50)
-    date = models.CharField(max_length=100)
-    time = models.CharField(max_length=100)
-    automobile = models.ForeignKey(
-        AutomobileVO,
-        related_name="appointments",
-        on_delete=models.PROTECT
-    )
+    date = models.CharField(max_length=200, null=False)
+    time = models.CharField(max_length=200, null=False)
+    vin = models.CharField(max_length=17)
     reason = models.TextField(max_length=100)
-    finished = models.BooleanField()
+    finished = models.BooleanField(default=False)
     canceled = models.BooleanField(default=False)
     vip = models.BooleanField(default=False)
     def get_api_url(self):

@@ -41,10 +41,7 @@ class NewModel extends React.Component {
             const cleared = {
                 name: "",
                 pictureUrl: "",
-                technician: "",
-                formVisible: "shadow p-4 mt-4 d-none",
-                successVisible: "",
-                message: "New model added successfully"
+                manufacturer: "",
             }
             this.setState(cleared)
         } else {

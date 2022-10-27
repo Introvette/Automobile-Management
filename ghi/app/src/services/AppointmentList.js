@@ -10,7 +10,7 @@ class AppointmentList extends React.Component {
 
 
     async finishedAppointment(id) {
-        const appointmentUrl = `http://localhost:8080/api/appointments/${id}/`;
+        const appointmentUrl = `http://localhost:8080/api/appointment/${id}/`;
 
         const fetchConfig = {
             method: "PUT",
@@ -26,10 +26,8 @@ class AppointmentList extends React.Component {
             this.componentDidMount();
         }
     }
-
-
     async cancelAppointment(id) {
-        const appointmentUrl = `http://localhost:8080/api/appointments/${id}/`;
+        const appointmentUrl = `http://localhost:8080/api/appointment/${id}/`;
 
         const fetchConfig = {
             method: "DELETE",
@@ -44,8 +42,9 @@ class AppointmentList extends React.Component {
             this.componentDidMount()
         }
     }
+
     async componentDidMount() {
-        const response = await fetch ("http://localhost:8080/api/appointments/");
+        const response = await fetch ("http://localhost:8080/api/appointment/");
         if (response.ok) {
             const data = await response.json();
             const filterAppointments = data.appointments.filter(appointment => appointment.finished === false);
@@ -75,14 +74,14 @@ class AppointmentList extends React.Component {
                         <th>VIP</th>
                         <th></th>
                         <th></th>
-                    </tr>
+                        </tr>
                 </thead>
                 <tbody>
                     {this.state.appointments.map(appointment => {
                         return (
                             <tr key={ appointment.id }>
                                 <td>{ appointment.vin }</td>
-                                <td>{ appointment.customer_name }</td>
+                                <td>{ appointment.owner }</td>
                                 <td>{ appointment.date }</td>
                                 <td>{ appointment.time }</td>
                                 <td>{ appointment.reason }</td>
@@ -100,17 +99,17 @@ class AppointmentList extends React.Component {
                     })}
                 </tbody>
             </table>
-        }
-        return (
-            <div className='container pt-5'>
-                <h1>Service Appointments</h1>
-                {appointmentHistory}
-                <div className="d-grid gap-2 d-sm-flex justify-content-sm-end">
-                    <Link to="/appointments/new" className="btn btn-success btn-lg px-4 gap-3">Schedule new appointment</Link>
-                </div>
-            </div>
-        )
-    }
+}
+    return (
+    <div className='container pt-5'>
+        <h1>Service Appointments</h1>
+        {appointmentHistory}
+        <div className="d-grid gap-2 d-sm-flex justify-content-sm-end">
+            <Link to="/appointment/new" className="btn btn-success btn-lg px-4 gap-3">Schedule new appointment</Link>
+        </div>
+    </div>
+)
+}
 }
 
 

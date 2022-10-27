@@ -8,7 +8,6 @@ import NewManufacturer from './inventory/NewManufacturer';
 import NewAutomobile from './inventory/NewAutomobile';
 import NewModel from './inventory/NewModel';
 import TechnicianForm from './services/NewTechnician';
-
 import NewAppointment from './services/NewAppointment';
 import AppointmentList from './services/AppointmentList';
 import ServiceHistory from './services/ServiceHistory';
@@ -37,7 +36,7 @@ function App() {
             <Route path="new" element={<TechnicianForm/>} />
           </Route>
           <Route path="/appointment/">
-            <Route path="" element={<AppointmentList/>} />
+            <Route path="/appointment/" element={<AppointmentList/>} />
             <Route path="new" element={<NewAppointment />} />
           </Route>
           <Route>

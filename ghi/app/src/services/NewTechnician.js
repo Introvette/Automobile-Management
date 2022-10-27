@@ -1,13 +1,13 @@
 import React from "react";
 
+// DON'T TOUCH THIS FILE ANYMORE!!!!
 
 class TechnicianForm extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
             name: "",
-            employee_number: "",
-            technicians: [],
+            id: ""
         }
     }
 
@@ -15,10 +15,10 @@ class TechnicianForm extends React.Component {
     handleSubmit = async (event) => {
         event.preventDefault();
         const data = {...this.state};
-        delete data.technicians;
 
 
-        const techniciansUrl = "http://localhost:8080/api/technicians/";
+
+        const techniciansUrl = "http://localhost:8080/api/technician/";
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
@@ -33,7 +33,7 @@ class TechnicianForm extends React.Component {
 
             const cleared = {
                 name: "",
-                employee_number: "",
+                id: "",
             };
             this.setState(cleared);
             const successAlert = document.getElementById("success-message")
@@ -66,8 +66,8 @@ class TechnicianForm extends React.Component {
 
 
                         <div className="form-floating mb-3">
-                            <input onChange={this.handleInputChange} value={this.state.employee_number} placeholder="Employee Number<" required type="number" name="employee_number" id="employee_number" className="form-control"/>
-                            <label htmlFor="employee_number">Employee Number</label>
+                            <input onChange={this.handleInputChange} value={this.state.id} placeholder="Employee ID<" required type="number" name="id" id="id" className="form-control"/>
+                            <label htmlFor="id">Employee ID</label>
                         </div>
 
 
