@@ -35,13 +35,13 @@ class AutosaleListEncoder(ModelEncoder):
         "id",
         "price",
         "automobile",
-        "sales_rep",
+        "sales_person",
         "customer"
         ]
 
     encoders = {
         "automobile": AutomobileVODetailEncoder(),
-        "sales_rep": SalespersonListEncoder(),
+        "sales_person": SalespersonListEncoder(),
         "customer": CustomerListEncoder(),
     }
 
@@ -51,13 +51,13 @@ class AutosaleDetailEncoder(ModelEncoder):
         "id",
         "price",
         "automobile",
-        "sales_rep",
+        "sales_person",
         "customer"
         ]
 
     encoders = {
         "automobile": AutomobileVODetailEncoder(),
-        "sales_rep": SalespersonListEncoder(),
+        "sales_person": SalespersonListEncoder(),
         "customer": CustomerListEncoder(),
     }
 
@@ -130,8 +130,8 @@ def list_autosales(request):
                 status=400,
             )
         try:
-            salesperson = content["sales_rep"]
-            content["sales_rep"] = Salesperson.objects.get(sales_person=salesperson)
+            salesperson = content["sales_person"]
+            content["sales_person"] = Salesperson.objects.get(id=salesperson)
 
         except Salesperson.DoesNotExist:
             return JsonResponse(

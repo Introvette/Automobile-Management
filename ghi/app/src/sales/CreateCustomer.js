@@ -8,8 +8,9 @@ class CreateCustomer extends React.Component {
       customer: '',
       address: '',
       phone: '',
+
     }
-    this.handlecustomerChange = this.handleCustomerChange.bind(this)
+    this.handleCustomerChange = this.handleCustomerChange.bind(this)
     this.handleAddressChange = this.handleAddressChange.bind(this)
     this.handlePhoneChange = this.handlePhoneChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -19,7 +20,10 @@ class CreateCustomer extends React.Component {
     event.preventDefault();
     const data = {...this.state};
 
-    const customerURL = 'http://localhost:8090/customer/new/';
+
+
+
+    const customerURL = 'http://localhost:8090/api/customers/';
     const fetchConfig = {
       method: "POST",
       body: JSON.stringify(data),
@@ -30,7 +34,7 @@ class CreateCustomer extends React.Component {
     const response = await fetch(customerURL, fetchConfig);
     if (response.ok) {
       const cleared = {
-        customer: '',
+        customer: "",
         address: "",
         phone: "",
       }
@@ -41,17 +45,17 @@ class CreateCustomer extends React.Component {
 
   handleCustomerChange(event) {
     const value = event.target.value
-    this.setState({customer:value})
+    this.setState({customer: value})
   }
 
   handleAddressChange(event) {
     const value = event.target.value
-    this.setState({address:value})
+    this.setState({address: value})
   }
 
   handlePhoneChange(event) {
     const value = event.target.value
-    this.setState({phone:value})
+    this.setState({phone: value})
   }
 
   render () {
@@ -62,16 +66,16 @@ class CreateCustomer extends React.Component {
             <h1>Create a new customer</h1>
             <form onSubmit={this.handleSubmit} id="create-hat-form">
               <div className="form-floating mb-3">
-                <input onChange={this.handleCustomerChange} placeholder="Name" required type="text" name="name" id="name" className="form-control" value={this.state.name} />
-                <label htmlFor="style">Name</label>
+                <input onChange={this.handleCustomerChange} placeholder="Name" required type="text" name="customer" id="customer" className="form-control" value={this.state.customer} />
+                <label htmlFor="customer">Name</label>
               </div>
               <div className="form-floating mb-3">
                 <input onChange={this.handleAddressChange} placeholder="Address" required type="text" name="address" id="address" className="form-control" value={this.state.address} />
-                <label htmlFor="fabric">Address</label>
+                <label htmlFor="address">Address</label>
               </div>
               <div className="form-floating mb-3">
                 <input onChange={this.handlePhoneChange} placeholder="Phone" required type="text" name="phone" id="phone" className="form-control" value={this.state.phone} />
-                <label htmlFor="color">Phone</label>
+                <label htmlFor="phone">Phone</label>
               </div>
               <button className="btn btn-primary">Create</button>
             </form>

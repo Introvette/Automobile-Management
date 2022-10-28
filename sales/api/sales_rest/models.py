@@ -34,7 +34,7 @@ class Autosale(models.Model):
         related_name="autosales",
         on_delete=models.PROTECT
     )
-    sales_rep = models.ForeignKey(
+    sales_person = models.ForeignKey(
         Salesperson,
         related_name="autosales",
         on_delete=models.PROTECT
@@ -47,5 +47,5 @@ class Autosale(models.Model):
 
     def __str__(self):
         return (
-            self.sales_rep.sales_person
+            self.sales_person.sales_person
         )

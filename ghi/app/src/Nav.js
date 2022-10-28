@@ -3,13 +3,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import React from 'react';
 
 
-
-
-
-
-
-
-function Navl() {
+function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
       <div className="container-fluid">
@@ -19,10 +13,10 @@ function Navl() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li className="nav-item>">
+            <li className="nav-item me-2 mb-1">
                 <Dropdown>
                   <Dropdown.Toggle variant="light" id="inventory-dropdown">
-                    Menu
+                    Automobiles
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item href="/manufacturers">List Manufacturers</Dropdown.Item>
@@ -35,7 +29,8 @@ function Navl() {
                     </React.Fragment>
                   </Dropdown.Menu>
                 </Dropdown>
-                <p></p>
+                </li>
+                <li className="nav-item me-2 mb-1">
                 <Dropdown>
                   <Dropdown.Toggle variant="light" id="services-dropdown">
                     Services
@@ -45,11 +40,10 @@ function Navl() {
                     <Dropdown.Item href="/appointment/history">Service History</Dropdown.Item>
                     <Dropdown.Item href="/technician/new">Add New Technician</Dropdown.Item>
                     <Dropdown.Item href="/appointment/new">Schedule an Appointment</Dropdown.Item>
-
                   </Dropdown.Menu>
-
                 </Dropdown>
-                <p></p>
+                </li>
+                <li className="nav-item me-2 mb-1">
                 <Dropdown>
                   <Dropdown.Toggle variant="light" id="customers-dropdown">
                     Sales
@@ -59,10 +53,10 @@ function Navl() {
                     <Dropdown.Item href="/salesperson/new">Add Sales Person</Dropdown.Item>
                     <Dropdown.Item href="/sales/new">Add a Sale</Dropdown.Item>
                     <Dropdown.Item href="/sales/"> Sales List</Dropdown.Item>
-                    <Dropdown.Item href="/sales/history">Sales History</Dropdown.Item>
+                    <Dropdown.Item href="/salesperson/history">Sales History</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
-              </li>
+             </li>
           </ul>
         </div>
       </div>
@@ -72,4 +66,4 @@ function Navl() {
 
 
 
-export default Navl;
+export default Nav;
