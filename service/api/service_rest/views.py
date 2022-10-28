@@ -55,13 +55,11 @@ def list_appointment(request):
     else:
         try:
             content = json.loads(request.body)
-
             technician_key = content["technician"]
             technician_value = Technician.objects.get(id=technician_key)
             content["technician"] = technician_value
             print(content)
             appointment = Appointment.objects.create(**content)
-            # print(appointment)
             return JsonResponse(
                     appointment,
                     encoder=AppointmentEncoder,

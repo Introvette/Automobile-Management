@@ -102,7 +102,7 @@ export default class AppointmentForm extends Component {
                                     {this.state.technicians?.map(technician => {
                                         return (
                                             <option key={technician.id} value={technician.id}>
-                                                {technician.id}
+                                                {technician.name} / {technician.id}
                                             </option>
                                         );
                                     })}
