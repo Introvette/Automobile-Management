@@ -12,13 +12,13 @@ class Automobiles extends React.Component {
 
 
   async getAutomobiles() {
-    const autoURL = 'http://localhost:8100/api/automobiles/'
+    const URL = 'http://localhost:8100/api/automobiles/'
     try {
-      const autoResponse = await fetch(autoURL)
-      if (autoResponse.ok) {
-        const autoData = await autoResponse.json()
+      const Response = await fetch(URL)
+      if (Response.ok) {
+        const Data = await Response.json()
         this.setState({
-          automobiles: autoData.autos,
+          automobiles: Data.autos,
         })
       }
     } catch (e) {
@@ -29,6 +29,7 @@ class Automobiles extends React.Component {
   async componentDidMount() {
     this.getAutomobiles()
   }
+
 
   render () {
     return (

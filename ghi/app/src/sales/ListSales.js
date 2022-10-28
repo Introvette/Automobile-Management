@@ -5,20 +5,20 @@ class ListSale extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      salerecords: [],
+      autosales: [],
     }
-    this.getSaleRecords = this.getSaleRecords.bind(this)
+    this.getSale = this.getSale.bind(this)
   }
 
 
-  async getSaleRecords() {
-    const salerecordURL = 'http://localhost:8090/salerecords/'
+  async getSale() {
+    const saleURL = 'http://localhost:8090/api/autosales/'
     try {
-      const salerecordRespnse = await fetch(salerecordURL)
-      if (salerecordRespnse.ok) {
-        const salerecordData = await salerecordRespnse.json()
+      const Respnse = await fetch(saleURL)
+      if (Respnse.ok) {
+        const Data = await Respnse.json()
         this.setState({
-            salerecords: salerecordData.salerecord,
+            autosales: Data.autosales,
         })
       }
     } catch (e) {
@@ -27,13 +27,12 @@ class ListSale extends React.Component {
   }
 
   async componentDidMount() {
-    this.getSaleRecords()
+    this.getSale()
   }
 
   render () {
     return (
       <table className="table table-striped">
-      <caption>List of sale records</caption>
       <thead >
         <tr>
           <th>Sale Person</th>
@@ -44,14 +43,14 @@ class ListSale extends React.Component {
         </tr>
       </thead>
       <tbody>
-       {this.state.salerecords.map(salerecord => {
+       {this.state.autosales.map(sale => {
         return (
-          <tr key={salerecord.id}>
-            <td>{salerecord.saleperson.name}</td>
-            <td>{salerecord.saleperson.number}</td>
-            <td>{salerecord.customer.name}</td>
-            <td>{salerecord.price}</td>
-            <td>{salerecord.automobile.vin}</td>
+          <tr key={sale.id}>
+            <td>{sale.sales_person.sales_person}</td>
+            <td>{sale.sales_person.employee_number}</td>
+            <td>{sale.customer.customer}</td>
+            <td>{"$" + sale.price}</td>
+            <td>{sale.automobile.vin}</td>
           </tr>
         )
        })}

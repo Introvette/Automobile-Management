@@ -1,33 +1,26 @@
-import React from "react";
-
-
+import React from 'react'
 
 class NewModel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
             manufacturers: [],
             name: "",
-            pictureUrl: "",
+            picture_Url: "",
         };
-
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handlePictureChange = this.handlePictureChange.bind(this);
         this.handleManufacturerChange = this.handleManufacturerChange.bind(this);
     }
-
     async handleSubmit(event) {
         event.preventDefault();
         const data = {...this.state};
+        data.manufacturer_id = data.manufacturer;
 
         delete data.manufacturers;
-        data.manufacturer_id = data.manufacturer;
-        data.picture_url = data.pictureUrl;
         delete data.manufacturer;
-        delete data.pictureUrl;
-
+        delete data.picture_Url;
         const url = "http://localhost:8100/api/models/";
         const fetchConfig = {
             method: "POST",
@@ -40,34 +33,25 @@ class NewModel extends React.Component {
         if (response.ok) {
             const cleared = {
                 name: "",
-                pictureUrl: "",
+                picture_Url: "",
                 manufacturer: "",
             }
             this.setState(cleared)
-        } else {
-            console.log(response)
         }
     }
-
-
-
     handleNameChange(event) {
         const value = event.target.value;
         this.setState({name: value});
     }
-
     handlePictureChange(event) {
         const value = event.target.value;
-        this.setState({pictureUrl: value});
+        this.setState({picture_Url: value});
     }
-
     handleManufacturerChange(event) {
         const value = event.target.value;
         this.setState({manufacturer: value});
     }
-
     async componentDidMount() {
-
         const url = "http://localhost:8100/api/manufacturers/";
         const response = await fetch(url);
         if (response.ok) {
@@ -77,7 +61,6 @@ class NewModel extends React.Component {
             console.error("invalid request")
         }
     }
-
     render () {
         return (
             <div className='container pt-5'>
@@ -97,7 +80,7 @@ class NewModel extends React.Component {
                             <input
                                 className="form-control" required type="text"
                                 onChange={this.handlePictureChange} id="pictureUrl"
-                                name="pictureUrl" value={this.state.pictureUrl}
+                                name="pictureUrl" value={this.state.picture_Url}
                                 placeholder="pictureUrl"
                             />
                             <label htmlFor="pictureUrl">Picture URL</label>
@@ -127,5 +110,4 @@ class NewModel extends React.Component {
         )
     };
 }
-
 export default NewModel;
