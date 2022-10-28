@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ServiceHistory = () => {
   const [appointments, setAppointments] = useState([]);
   const [search, setSearch] = useState('');
-  const [searchResults, setSearchResults] = useState([])
+  const [Results, setResults] = useState([])
 
-  const getAppointments = async () => {
+  const Appointments = async () => {
     let response = await fetch('http://localhost:8080/api/appointment/')
     let data = await response.json()
     setAppointments(data.appointments)
-    setSearchResults(data.appointments)
+    setResults(data.appointments)
   };
 
   useEffect(() => {
-    getAppointments()
-
-
+    Appointments()
   }, [])
 
   useEffect(
     () => {
       if (search) {
         let filteredData = appointments.filter(appointment => appointment.vin.includes(search))
-        setSearchResults(filteredData);
+        setResults(filteredData);
       } else{
-        setSearchResults(appointments)
+        setResults(appointments)
       }
     }, [search]
   )
@@ -32,10 +30,12 @@ const ServiceHistory = () => {
   return (
     <>
       <form className="mx-2 my-auto d-inline w-100">
+
         <input type="text" className="form-control border border-right-0" placeholder="Enter VIN Number" onChange={(e) => setSearch(e.target.value)} />
+
       </form>
-      <h1>Service History</h1>
-      <table className='table table-striped'>
+      <h1 style={{fontSize: "30px"}} style={{color: 'gray'}}>Service History</h1>
+      <table className='table table-striped' style={{fontSize: "14px"}}>
         <thead>
           <tr>
             <th>VIN</th>
@@ -47,7 +47,7 @@ const ServiceHistory = () => {
           </tr>
         </thead>
         <tbody>
-          {searchResults.map(appointment => {
+          {Results.map(appointment => {
             return (
               <tr key={appointment.id}>
                 <td>{appointment.vin}</td>

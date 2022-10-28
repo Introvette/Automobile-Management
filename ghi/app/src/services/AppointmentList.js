@@ -85,7 +85,7 @@ class AppointmentList extends React.Component {
                                 <td>{ appointment.date }</td>
                                 <td>{ appointment.time }</td>
                                 <td>{ appointment.reason }</td>
-                                <td>{ appointment.technician.name }</td>
+                                <td>{ appointment.technician.name } / Technician ID: {appointment.technician.id} </td>
                                 { appointment.vip && <td>Yes</td> }
                                 { !appointment.vip && <td>No</td> }
                                 {<td>
