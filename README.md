@@ -14,58 +14,69 @@ Each of those bounded contexts' will be represented by a seperate microservice. 
 
 ## Inventory microservice:
 
-Need front end that can do these things :
+Need front end that can do these things:
+
 -Show a list of manufacturers
+
 -Create a new manufacturer (form)
+
 -Show a list of vehicle models
+
 -Create a vehicle model page (form)
+
 -Show a list of automobiles in inventory
+
 -Create an automobile in inventory (form)
 
 ## Service microservice:
 
 create models for:
-technician
-Service
-automobileVO- to get info on cars
-poller: need automobileVO to get data from inventory
-views:
-Frontend:
 
-service list : list of appointments currently in the system
+-technician
 
+-Service
 
-service history : list of services on a specific vin
+-automobileVO- to get info on cars
 
+-poller: need automobileVO to get data from inventory views:
 
-create service appointment (form)
+-Frontend:
 
+#service list : list of appointments currently in the system
 
-create a technician (form)
+#service history : list of services on a specific vin
+
+#create service appointment (form)
+
+#create a technician (form)
 
 
 ## Sales microservice:
 
 create models for:
-Employee
-Customer
-SalesRecord
-AutomobileVO
-poller: need automobileVO to get data from inventory
-views:
-Frontend:
+
+-Employee
+
+-Customer
+
+-SalesRecord
+
+-AutomobileVO
+
+-poller: need automobileVO to get data from inventory views:
+
+-Frontend:
+
+#Sales Record List page that lists all sales in system
 
 
-Sales Record List page that lists all sales in system
+#Sales person(based on employee number) history page
 
 
-Sales person(based on employee number) history page
+#Create a sales person (employee) (form)
 
 
-Create a sales person (employee) (form)
-
-
-Create a sales record (form)
+#Create a sales record (form)
 
 
 Create a customer (form)
