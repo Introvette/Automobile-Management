@@ -32,6 +32,8 @@ class CreateSalesPerson extends React.Component {
         employee_number: '',
       }
       this.setState(cleared)
+      const successAlert = document.getElementById("success-message")
+      successAlert.classList.remove("d-none")
     }
   }
 
@@ -62,8 +64,11 @@ class CreateSalesPerson extends React.Component {
                 <input onChange={this.handleNumberChange} placeholder="Number" required type="text" name="number" id="number" className="form-control" value={this.state.employee_number} />
                 <label htmlFor="number">Employee Number</label>
               </div>
-              <button className="btn btn-primary">Create</button>
+              <button className="btn btn-success">Create</button>
             </form>
+            <div className="alert alert-success d-none mt-3" id="success-message">
+              Successfully added a new sales person!
+            </div>
           </div>
         </div>
       </div>

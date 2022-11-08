@@ -77,7 +77,6 @@ class TechnicianForm extends React.Component {
                         <div className="alert alert-success d-none mt-5" id="success-message">
                             Successfully added a new technician!
                         </div>
-
                     </div>
                 </div>
             </div>

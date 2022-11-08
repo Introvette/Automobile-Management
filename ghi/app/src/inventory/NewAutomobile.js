@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Button from 'react-bootstrap/Button';
 
 
 class NewAutomobile extends React.Component {
@@ -173,7 +173,7 @@ class NewAutomobile extends React.Component {
                                 </select>
                                 <label htmlFor="model_id">Model</label>
                             </div>
-                            <button className="btn btn-primary">Add</button>
+                            <Button className="btn btn-primary bg-success">Add</Button>
                         </form>
                     </div>
                 </div>

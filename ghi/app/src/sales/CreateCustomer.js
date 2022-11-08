@@ -39,6 +39,8 @@ class CreateCustomer extends React.Component {
         phone: "",
       }
       this.setState(cleared)
+      const successAlert = document.getElementById("success-message")
+      successAlert.classList.remove("d-none")
     }
   }
 
@@ -77,8 +79,11 @@ class CreateCustomer extends React.Component {
                 <input onChange={this.handlePhoneChange} placeholder="Phone" required type="text" name="phone" id="phone" className="form-control" value={this.state.phone} />
                 <label htmlFor="phone">Phone</label>
               </div>
-              <button className="btn btn-primary">Create</button>
+              <button className="btn btn-success">Create</button>
             </form>
+            <div className="alert alert-success d-none mt-5" id="success-message">
+              <p>Customer created successfully!</p>
+            </div>
           </div>
         </div>
       </div>
@@ -87,3 +92,8 @@ class CreateCustomer extends React.Component {
 }
 
 export default CreateCustomer
+
+
+function toCamelCase(str){
+
+}

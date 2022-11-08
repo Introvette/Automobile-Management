@@ -79,6 +79,8 @@ console.log(data)
         automobile: '',
       }
       this.setState(cleared)
+      const successAlert = document.getElementById("success-message")
+      successAlert.classList.remove("d-none")
     }
   }
 
@@ -146,16 +148,20 @@ console.log(data)
             <select onChange={this.handleAutomobileChange} required name="automobile" id="automobile" value={this.state.automobile} className="form-select">
             <option value="">Choose a Automobile</option>
             {this.state.autos.map(automobile => {
-            return (
+              if (automobile.sold === false){
+              return (
                 <option key={automobile.vin} value={automobile.vin}>
                 {automobile.vin}
                 </option>
-            );
-            })}
+              )};
+          })}
             </select>
             </div>
-              <button className="btn btn-primary">Create</button>
+              <button className="btn btn-success">Create</button>
             </form>
+            <div className="alert alert-success d-none mt-3" id="success-message">
+              Congrats on the new sales!
+            </div>
           </div>
         </div>
       </div>

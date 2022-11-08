@@ -115,7 +115,7 @@ export default class AppointmentForm extends Component {
                             <div className={this.state.successClass} id="success-alert">
                                 Appointment Added
                             </div>
-                            <button className="btn btn-primary">Create</button>
+                            <button className="btn btn-success">Create</button>
                         </form>
                     </div>
                 </div>

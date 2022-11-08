@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Button from 'react-bootstrap/Button';
 
 class NewManufacturer extends React.Component {
   constructor(props) {
@@ -50,7 +50,8 @@ class NewManufacturer extends React.Component {
                 <input onChange={this.handleNameChange} placeholder="Name" required type="text" name="name" id="name" className="form-control" value={this.state.name} />
                 <label htmlFor="name">Name</label>
               </div>
-              <button className="btn btn-primary">Create</button>
+              <Button className="btn btn-primary bg-success">Create</Button>
+
             </form>
           </div>
         </div>

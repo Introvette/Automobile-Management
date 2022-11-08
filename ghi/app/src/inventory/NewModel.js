@@ -1,4 +1,6 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button';
+
 
 class NewModel extends React.Component {
     constructor(props) {
@@ -102,7 +104,7 @@ class NewModel extends React.Component {
                             </select>
                             <label htmlFor="manufacturer">Manufacturer</label>
                         </div>
-                        <button className="btn btn-primary">Create Model</button>
+                        <Button className="btn btn-primary bg-success">Create</Button>
                     </form>
                 </div>
             </div>
